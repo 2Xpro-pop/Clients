@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaClient.ViewModels"
+        xmlns:dao="using:Bll.Dao"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="AvaloniaClient.Views.BudgetHistoriesWindow"
+        x:DataType="vm:RoutedBudgetHistoriesViewModel"
+        x:CompileBindings="True">
+
+  <StackPanel>
+
+    <Panel Classes="corner-bg">
+      <DataGrid Items="{Binding BudgetHistories}"
+                IsReadOnly="True"
+                Classes="my-1">
+        <DataGrid.Columns>
+          <DataGridTextColumn x:DataType="dao:BudgetHistoryDao" Header="Имя филиала" Binding="{Binding Fillial}" />
+          <DataGridTextColumn x:DataType="dao:BudgetHistoryDao" Header="Описание" MinWidth="500" Binding="{Binding Description}" />
+          <DataGridTemplateColumn x:DataType="dao:BudgetHistoryDao" Header="Отчет" CanUserReorder="True" SortMemberPath="Currency">
+            <DataGridTemplateColumn.CellTemplate>
+              <DataTemplate>
+                <TextBlock x:DataType="dao:BudgetHistoryDao" Text="{Binding Currency, StringFormat='{}{0} сом'}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Foreground="{Binding Currency, Converter={StaticResource redOrGreenDobleConverter}}"/>
+              </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+          </DataGridTemplateColumn>
+        </DataGrid.Columns>
+      </DataGrid>
+      <Image Classes="bg-icon right" Margin="50" Height="200" Source="/Assets/wood.png" />
+    </Panel>
+
+  </StackPanel>
+
+</UserControl>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:AvaloniaClient.ViewModels"
+             xmlns:models="using:Dal.Models"
+             x:Class="AvaloniaClient.Views.PersonalsView"
+             x:DataType="vm:RoutedPersonalsViewModel"
+             x:CompileBindings="True">
+  <StackPanel>
+
+    <Panel Classes="corner-bg">
+      <DataGrid Items="{Binding Personals}"
+                SelectedItem="{Binding SelectedPersonal}"
+                CanUserResizeColumns="True"
+                Classes="my-1"
+                x:Name="dataGrid">
+        <DataGrid.Columns >
+          <DataGridTextColumn x:DataType="models:Personal" Header="Name" Width="220"  Binding="{Binding Name}"/>
+          <DataGridTextColumn x:DataType="models:Personal" Header="Surname" Width="150" Binding="{Binding Surname}" />
+          <DataGridTextColumn x:DataType="models:Personal" IsReadOnly="True" Header="Salary" Width="150" Binding="{Binding SalaryAmount}" />
+          <DataGridTextColumn x:DataType="models:Personal" IsReadOnly="True" Header="Percent" Width="150" Binding="{Binding SalaryPercent}" />
+        </DataGrid.Columns>
+      </DataGrid>
+      <Image Classes="bg-icon right" Margin="50" Height="200" Source="/Assets/purple.png" />
+    </Panel>
+
+    <StackPanel Orientation="Horizontal" Spacing="25">
+      <Button Classes="secondary" Command="{Binding Add}">Add personal</Button>
+      <Button Command="{Binding PaySalary}"> Pay salary</Button>
+    </StackPanel>
+
+  </StackPanel>
+</UserControl>

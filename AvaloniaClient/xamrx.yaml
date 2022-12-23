@@ -1,0 +1,24 @@
+project: AvaloniaClient
+name: $2
+commands: 
+  rx-view:
+    -
+      template: PageRx
+      path: ./Views/${name}View.axaml
+    -
+      template: PageRxCs
+      path: ./Views/${name}View.axaml.cs
+    -
+      template: VmRx
+      path: ./ViewModels/${name}ViewModel.cs
+
+  rx-window:
+    -
+      template: WindowRx
+      path: ./Views/${name}Window.axaml
+    -
+      template: WindowRxCs
+      path: ./Views/${name}Window.axaml.cs
+    -
+      template: WindowVm
+      path: ./ViewModels/${name}ViewModel.cs

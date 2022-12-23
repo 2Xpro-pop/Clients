@@ -1,0 +1,50 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaClient.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        CanResize="False"
+        SizeToContent="Height"
+        Width="270"
+        mc:Ignorable="d"
+        x:Class="AvaloniaClient.Views.AddFillialWindow"
+        Background="Transparent"
+        TransparencyLevelHint="Mica"
+        Icon="/Assets/avalonia-logo.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        x:DataType="vm:AddFillialViewModel"
+        Title="AvaloniaClient"
+        x:CompileBindings="True">
+
+  <Panel>
+
+    <ExperimentalAcrylicBorder IsHitTestVisible="False">
+      <ExperimentalAcrylicBorder.Material>
+        <ExperimentalAcrylicMaterial
+            BackgroundSource="Digger"
+            TintColor="Black"
+            TintOpacity="1"
+            MaterialOpacity="0.85" />
+      </ExperimentalAcrylicBorder.Material>
+    </ExperimentalAcrylicBorder>
+
+    <StackPanel Margin="25" Spacing="8">
+
+      <Label>Name</Label>
+      <TextBox Text="{Binding Name}"/>
+      <Label>Address</Label>
+      <TextBox Text="{Binding Address}"/>
+
+      <Button Classes="primary"
+              HorizontalAlignment="Stretch"
+              HorizontalContentAlignment="Center"
+              Command="{Binding Create}">Create</Button>
+      <Button Background="Transparent"
+              HorizontalAlignment="Stretch"
+              HorizontalContentAlignment="Center"
+              Command="{Binding Cancel}">Cancel</Button>
+    </StackPanel>
+
+  </Panel>
+
+</Window>

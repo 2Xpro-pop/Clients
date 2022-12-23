@@ -1,0 +1,61 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaClient.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:view="using:AvaloniaClient.Views"
+        CanResize="False"
+        SizeToContent="Height"
+        Width="270"
+        mc:Ignorable="d"
+        x:Class="AvaloniaClient.Views.AddPersonalWindow"
+        Background="Transparent"
+        TransparencyLevelHint="Mica"
+        Icon="/Assets/avalonia-logo.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        x:DataType="vm:AddPersonalViewModel"
+        Title="AvaloniaClient">
+
+  <Panel>
+
+    <ExperimentalAcrylicBorder IsHitTestVisible="False">
+      <ExperimentalAcrylicBorder.Material>
+        <ExperimentalAcrylicMaterial
+            BackgroundSource="Digger"
+            TintColor="Black"
+            TintOpacity="1"
+            MaterialOpacity="0.85" />
+      </ExperimentalAcrylicBorder.Material>
+    </ExperimentalAcrylicBorder>
+
+    <StackPanel Margin="25" Spacing="8">
+
+      <Label>Office</Label>
+      <view:IdPickableView Name="pickOffice"/>
+
+      <Label>Name</Label>
+      <TextBox Text="{Binding Name}"/>
+      <Label>Surname</Label>
+      <TextBox Text="{Binding Surname}"/>
+
+      <Label IsVisible="{Binding !IsProcent}">Salary</Label>
+      <TextBox IsVisible="{Binding !IsProcent}" Text="{Binding Salary}"/>
+
+      <Label IsVisible="{Binding IsProcent}">Procent</Label>
+      <TextBox IsVisible="{Binding IsProcent}" Text="{Binding Procent}"/>
+
+      <CheckBox IsChecked="{Binding IsProcent}">Is procent salary</CheckBox>
+
+      <Button Classes="primary"
+              HorizontalAlignment="Stretch"
+              HorizontalContentAlignment="Center"
+              Command="{Binding Create}">Create</Button>
+      <Button Background="Transparent"
+              HorizontalAlignment="Stretch"
+              HorizontalContentAlignment="Center"
+              Command="{Binding Cancel}">Cancel</Button>
+    </StackPanel>
+
+  </Panel>
+
+</Window>

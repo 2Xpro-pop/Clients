@@ -1,0 +1,27 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:AvaloniaClient.ViewModels"
+             xmlns:views="using:AvaloniaClient.Views"
+             x:DataType="vm:RoutedPacientsViewModel"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaClient.Views.PacientsView">
+  <Panel>
+    <StackPanel>
+      <Panel Classes="corner-bg">
+        <DataGrid Items="{Binding Patients}"
+                  IsReadOnly="True"
+                  Classes="my-1">
+          <DataGrid.Columns >
+            <DataGridTextColumn Header="Name" Width="180"  Binding="{Binding Name}"/>
+            <DataGridTextColumn Header="Surname" Width="180"  Binding="{Binding Surname}"/>
+            <DataGridTextColumn Header="Phone" Width="180"  Binding="{Binding PhoneNumber}"/>
+          </DataGrid.Columns>
+        </DataGrid>
+        <Image Classes="bg-icon right" Margin="25" Height="200" Source="/Assets/green.png" />
+      </Panel>
+    </StackPanel>
+
+  </Panel>
+</UserControl>

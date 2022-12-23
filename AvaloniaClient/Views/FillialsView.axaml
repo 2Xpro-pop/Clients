@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:AvaloniaClient.ViewModels"
+             xmlns:dao="using:Bll.Dao"
+             xmlns:model="using:Dal.Models"
+             xmlns:models="using:AvaloniaClient.Models"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaClient.Views.FillialsView"
+             x:DataType="vm:FillialsViewModel"
+             x:CompileBindings="True">
+  <StackPanel>
+    
+    <Panel Classes="corner-bg">
+      <DataGrid Items="{Binding Offices}"
+                SelectedItem="{Binding SelectedOffice}"
+                CanUserResizeColumns="True"
+                Classes="my-1"
+                x:Name="fillialsDataGrid">
+        <DataGrid.Columns>
+          <DataGridTextColumn x:DataType="model:Office" Header="Name" Width="220"  Binding="{Binding Name}"/>
+          <DataGridTextColumn x:DataType="model:Office" Header="Address" Width="150" Binding="{Binding Address}" />
+          <DataGridTextColumn x:DataType="model:Office" IsReadOnly="True" Header="Budget" Width="150" Binding="{Binding Budget}" />
+        </DataGrid.Columns>
+      </DataGrid>
+      <Image Classes="bg-icon right" Margin="50" Height="200" Source="/Assets/brown.png" />
+    </Panel>
+
+    <StackPanel Orientation="Horizontal" Spacing="25">
+      <Button Classes="secondary" Command="{Binding Add}">Добавить</Button>
+      <Button Command="{Binding AddBudget}">Выделить/Урезать бюджет</Button>
+    </StackPanel>
+
+  </StackPanel>
+  
+</UserControl>

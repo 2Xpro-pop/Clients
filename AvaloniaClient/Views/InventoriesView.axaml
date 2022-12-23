@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:AvaloniaClient.ViewModels"
+             xmlns:models="using:Dal.Models"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaClient.Views.InventoriesView"
+             x:DataType="vm:InventoriesViewModel"
+             x:CompileBindings="True">
+
+  <StackPanel>
+
+    <Panel Classes="corner-bg">
+      <DataGrid Items="{Binding Inventories}"
+                SelectedItem="{Binding SelectedInventory}"
+                CanUserResizeColumns="True"
+                IsReadOnly="True"
+                Classes="my-1"
+                x:Name="dataGrid">
+        <DataGrid.Columns>
+          <DataGridTextColumn x:DataType="models:Inventory" Header="Name" Width="220"  Binding="{Binding Name}"/>
+          <DataGridTextColumn x:DataType="models:Inventory" Header="Amount" Width="150" Binding="{Binding Amount}" />
+        </DataGrid.Columns>
+      </DataGrid>
+      <Image Classes="bg-icon right" Margin="50" Height="200" Source="/Assets/red.png" />
+    </Panel>
+
+    <StackPanel Orientation="Horizontal" Spacing="25">
+      <Button Classes="secondary" Command="{Binding Buy}">Buy</Button>
+      <Button Command="{Binding Change}">Change ammount </Button>
+    </StackPanel>
+
+  </StackPanel>
+  
+</UserControl>
